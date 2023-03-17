@@ -26,7 +26,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "setup": "rd /s/q node_modules & pnpm install"
+    "setup": "rd /s/q node_modules & pnpm install",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -65,11 +66,20 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
-    "prettier": "^2.8.4"
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
+    "husky": "^8.0.0"
   },
   "cracoConfig": "./craco.config.js",
+  "lint-staged": {
+    "**/*": [
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
+    ]
+  },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
