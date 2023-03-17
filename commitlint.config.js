@@ -7,6 +7,7 @@
 * style：仅样式改动
 * docs：仅文档新增/改动
 * chore：构建过程或辅助工具的变动
+* test: 由于测试对代码或其他部分产生的任何改动
 */
 module.exports = {
   extends: [
@@ -14,7 +15,7 @@ module.exports = {
   ],
   rules: {
     'type-enum': [2, 'always', [
-      'feat', 'update', 'fix', 'refactor', 'optimize', 'style', 'docs', 'chore', 'init'
+      'feat', 'update', 'fix', 'refactor', 'optimize', 'style', 'docs', 'chore', 'init', 'test'
     ]],
     'type-case': [0],
     'type-empty': [0],
