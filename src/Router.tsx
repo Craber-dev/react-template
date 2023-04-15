@@ -8,24 +8,24 @@ function renderRoute(route: RouteItem) {
   return (
     <Route
       key={route.path}
-      path={route.path}
+      path={route.children ? route.path + '/*' : route.path}
       element={route.redirect ? (<Navigate to={route.redirect} />) : (
         <>
           <div className={styles.body}>
             {
               route.layout ? (
                 <route.layout>
-                  { route.component }
+                  {route.children ? (<Routes>{route.children.map(renderRoute)}</Routes>) : (route.component && (<route.component />))}
                 </route.layout>
               ) : (
-                route.component && (<route.component />)
+                route.children ? (<Routes>{route.children.map(renderRoute)}</Routes>) : (route.component && (<route.component />))
               )
             }
           </div>
         </>
       )}
     >
-      {route.children && route.children.map(renderRoute)}
+      {/* {route.children && route.children.map(renderRoute)} */}
     </Route>
   );
 }

@@ -1,3 +1,4 @@
 *rc.js
 ./node_modules
 *.config.js
+./public
